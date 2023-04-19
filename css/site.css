@@ -1,0 +1,16 @@
+
+#general-body {
+    min-height: calc(98vh - 5vh);
+    display: flex;
+    flex-direction: column;
+  }
+
+
+.footer-container{
+    margin-top: 20px;
+    background-color: #000;
+    color: #fff;
+    flex-shrink: 0;
+    height: 5vh;
+/* Height of the footer */
+}
