@@ -1,5 +1,5 @@
 <?php 
-    $host ='127..0.1';
+    $host ='127.0.0.1';
     $db ='attendence_db';
     $user='root';
     $pass='';
@@ -9,14 +9,17 @@
 
     try{
         $pdo= new PDO($dsn,$user,$pass);
-        // echo '<h1 class="text-center text-success">Database Found</h1>';
+        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        
 
     }catch(PDOException $e){
         throw new PDOException($e->getMessage());
         // echo '<h1 class="text-center text-danger">NO Database Found</h1>';
-
     }
 
+    require_once 'crud.php';
+    $crud = new crud($pdo);
+    
 
 
 ?>

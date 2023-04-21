@@ -3,6 +3,8 @@
  
  <?php require_once 'includes/header.php'; 
         require_once 'db/conn.php';
+
+        $results=$crud->getSpecialties();
  
  ?>
 
@@ -30,10 +32,17 @@
         <div class="mb-3">
             <label for="specialty" class="form-label">Area of Expertise</label>
             <select class="form-select" aria-label="Default select example" id="specialty" name="specialty">
-                <option value="0" selected>Database Admin</option>
-                <option value="1">Software Developer</option>
-                <option value="2">Web administrator</option>
-                <option value="3">Others</option>
+                <!-- <option value="1" selected>Database Admin</option>
+                <option value="0">Software Developer</option>
+                <option value="1">Web administrator</option>
+                <option value="3">Others</option> -->
+                <?php 
+                    while($r= $results->fetch(PDO::FETCH_ASSOC)){
+                        ?>
+                        <option value="<?php echo $r['specialty_id'];  ?>">  <?php echo $r['name']; ?> </option>
+         
+                    <?php } ?>
+                ?>
             </select>
         </div>
 
@@ -45,11 +54,6 @@
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email"  placeholder="name@example.com" name="email">
-        </div>
-
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" name="password">
         </div>
 
         <div class="d-grid gap-2">
